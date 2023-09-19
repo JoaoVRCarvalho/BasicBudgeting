@@ -4,6 +4,7 @@
   "description": "Desenvolver um aplicativo de gerenciamento financeiro que permita aos usuários seguir a regra de economia 50-30-20 para alocar suas finanças mensais em três categorias principais: necessidades, desejos e economias.",
   "main": "index.js",
   "scripts": {
+    "server": "lite-server --baseDir=dist",
     "watch": "tsc -w",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

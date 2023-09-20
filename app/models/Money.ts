@@ -9,7 +9,7 @@ export class Money {
   }
 
   percentage(percent: number): number {
-    return (percent / this._centsAmount) * 10000
+    return (percent / 100) * (this._centsAmount * 100)
   }
 
   add(value: number, currency?: string): number {

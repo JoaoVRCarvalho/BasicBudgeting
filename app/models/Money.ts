@@ -1,29 +1,27 @@
 export class Money {
-  constructor(
-    private _centsAmount: number, 
-    private readonly currency = 'BR'
-  ) {}
+  private readonly currency = 'BR'
+  private readonly centsAmount: number
+
+  constructor(amount: string) {
+    this.centsAmount = parseInt(amount) / 100 
+  }
   
   get amount() {
-    return this._centsAmount / 100
+    return this.centsAmount / 100
   }
 
   percentage(percent: number): number {
-    return (percent / 100) * (this._centsAmount * 100)
+    return (percent / 100) * (this.centsAmount * 100)
   }
 
-  add(value: number, currency?: string): number {
-    if (currency) {
-      this.validateCurrency(currency);
-    }
-    return (this._centsAmount + value) / 100;
+  add(value: Money): number {
+    this.validateCurrency(value.currency);
+    return (this.centsAmount + value.centsAmount) / 100;
   }
 
-  subtract(value: number, currency?: string): number {
-    if (currency) {
-      this.validateCurrency(currency);
-    }
-    return (this._centsAmount - value) / 100;
+  subtract(value: Money): number {
+    this.validateCurrency(value.currency);
+    return (this.centsAmount - value.centsAmount) / 100;
   }
 
   private validateCurrency(currency: string) {

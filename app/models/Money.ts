@@ -3,30 +3,35 @@ export class Money {
   private readonly centsAmount: number
 
   constructor(amount: string) {
-    this.centsAmount = parseInt(amount) / 100 
+    this.centsAmount = parseInt(amount) / 100;
   }
   
   get amount() {
-    return this.centsAmount / 100
+    return this.centsAmount / 100;
   }
 
   percentage(percent: number): number {
-    return (percent / 100) * (this.centsAmount * 100)
+    return ((percent / 100) * this.centsAmount) / 100;
   }
 
-  add(value: Money): number {
-    this.validateCurrency(value.currency);
-    return (this.centsAmount + value.centsAmount) / 100;
+  add(moneyObj: Money): number {
+    this.validateCurrency(moneyObj.currency);
+    return (this.centsAmount + moneyObj.centsAmount) / 100;
   }
 
-  subtract(value: Money): number {
-    this.validateCurrency(value.currency);
-    return (this.centsAmount - value.centsAmount) / 100;
+  subtract(moneyObj: Money): number {
+    this.validateCurrency(moneyObj.currency);
+    return (this.centsAmount - moneyObj.centsAmount) / 100;
+  }
+
+  multiply(moneyObj: Money): number {
+    this.validateCurrency(moneyObj.currency);
+    return (this.centsAmount * moneyObj.centsAmount) / 100;
   }
 
   private validateCurrency(currency: string) {
     if (this.currency !== currency) {
-      throw new TypeError('It was providade a value in a different currency')
+      throw new TypeError('It was providade a value in a different currency');
     }
   }
 }

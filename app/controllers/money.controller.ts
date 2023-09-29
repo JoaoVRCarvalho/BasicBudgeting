@@ -16,10 +16,13 @@ export class MoneyController {
   private fixTwoDecimals(event: InputEvent) {
     const regExpression = new RegExp("^-?\\d+(?:\\.\\d{0," + 2 + "})?", "g");
     const inputValue = this._input.value.match(regExpression)[0];
-    const dotIndex = inputValue.indexOf('.');
-    if (dotIndex === -1) return this._input.value =  `${inputValue}.${'0'.repeat(2)}`
-    const numberOfZeros= 2 - (inputValue.length - dotIndex);
+    const commaIndex = inputValue.indexOf(',');
+
+    if (commaIndex === -1) {
+      return this._input.value =  `${inputValue}.${'0'.repeat(2)}`
+    }
+    
+    const numberOfZeros= 2 - (inputValue.length - commaIndex);
     return this._input.value =  numberOfZeros > 0 ? `${inputValue + '0'.repeat(numberOfZeros)}`: inputValue
-    // this._input.value = parseFloat(this._input.value).toFixed(2);
   }
 }

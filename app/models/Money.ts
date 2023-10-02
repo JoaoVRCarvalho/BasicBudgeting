@@ -3,15 +3,16 @@ export class Money {
   private readonly centsAmount: number
 
   constructor(amount: string) {
-    this.centsAmount = parseInt(amount) / 100;
+    this.centsAmount = parseFloat(amount) / 100;
   }
   
   get amount() {
-    return this.centsAmount / 100;
+    return this.centsAmount * 100
   }
 
   percentage(percent: number): number {
-    return ((percent / 100) * this.centsAmount) / 100;
+    return (this.centsAmount * (percent / 100)) * 100;
+    // return ((percent / 100) * this.centsAmount);
   }
 
   add(moneyObj: Money): number {

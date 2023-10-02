@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "server": "lite-server --baseDir=dist",
+    "start": "concurrently \"npm run watch\" \"npm run server\"",
     "watch": "tsc -w",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -14,6 +15,7 @@
     "typescript": "^5.2.2"
   },
   "dependencies": {
+    "concurrently": "^8.2.1",
     "lite-server": "^2.6.1"
   }
 }

@@ -1,28 +1,17 @@
 import { Money } from "../models/Money.js";
+import { Utils } from "../models/Utils.js";
 
 export class MoneyController {
   private _input: HTMLInputElement
 
   constructor() {
     this._input = document.querySelector('#valor');
-    this._input.onchange = this.fixTwoDecimals.bind(this);
   }
 
   add() {
-    console.log(this._input.value);
-    // console.log(this._input.value);
-  }
-
-  private fixTwoDecimals(event: InputEvent) {
-    const regExpression = new RegExp("^-?\\d+(?:\\.\\d{0," + 2 + "})?", "g");
-    const inputValue = this._input.value.match(regExpression)[0];
-    const commaIndex = inputValue.indexOf(',');
-
-    if (commaIndex === -1) {
-      return this._input.value =  `${inputValue}.${'0'.repeat(2)}`
-    }
-    
-    const numberOfZeros= 2 - (inputValue.length - commaIndex);
-    return this._input.value =  numberOfZeros > 0 ? `${inputValue + '0'.repeat(numberOfZeros)}`: inputValue
+    this._input.value = Utils.fixTwoDecimals(this._input.value);
+    const salary = new Money(this._input.value);
+    console.log(salary.amount);
+    // console.log(salary.percentage(55))
   }
 }

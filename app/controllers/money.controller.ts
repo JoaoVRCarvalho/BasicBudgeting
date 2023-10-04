@@ -12,6 +12,5 @@ export class MoneyController {
     this._input.value = Utils.fixTwoDecimals(this._input.value);
     const salary = new Money(this._input.value);
     console.log(salary.amount);
-    // console.log(salary.percentage(55))
   }
 }

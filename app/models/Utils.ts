@@ -1,4 +1,4 @@
-export class Utils {
+class Utils {
 
   static showDecimal(num: string | number) {
     let value;
@@ -15,5 +15,12 @@ export class Utils {
     const numberOfZeros= 2 - (inputValue.length - commaIndex);
     return value =  numberOfZeros > 0 ? `${inputValue + '0'.repeat(numberOfZeros)}`: inputValue
   }
-
 }
+
+enum expenseType {
+  'needs',
+  'wants',
+  'savings'   
+}
+
+export { Utils, expenseType }

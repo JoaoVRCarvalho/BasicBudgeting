@@ -9,7 +9,7 @@ export class MoneyController {
   }
 
   add() {
-    this._input.value = Utils.showDecimal(this._input.value).toString();
+    this._input.value = Utils.showDecimal(this._input.value)
     const budget = new Budget(this._input.value);
     console.log(budget.amount);
     console.log(budget.needs);

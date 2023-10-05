@@ -1,6 +1,6 @@
 import { Utils } from "./Utils.js";
 
-export abstract class Money {
+export class Money {
   protected amountCents: number
   protected readonly currency = 'BR';
 

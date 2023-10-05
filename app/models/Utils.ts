@@ -1,7 +1,7 @@
 class Utils {
 
   static showDecimal(num: string | number) {
-    let value;
+    let value: string
     typeof num !== 'string' ? value = num.toString() : value = num; 
     
     const regExpression = new RegExp("^-?\\d+(?:\\.\\d{0," + 2 + "})?", "g");
@@ -9,11 +9,11 @@ class Utils {
     const commaIndex = inputValue.indexOf('.');
 
     if (commaIndex === -1) {
-      return value =  `${inputValue}.${'0'.repeat(2)}`
+      return `${inputValue}.${'0'.repeat(2)}`;
     }
     
     const numberOfZeros= 2 - (inputValue.length - commaIndex);
-    return value =  numberOfZeros > 0 ? `${inputValue + '0'.repeat(numberOfZeros)}`: inputValue
+    return numberOfZeros > 0 ? `${inputValue + '0'.repeat(numberOfZeros)}`: inputValue;
   }
 }
 

@@ -1,6 +1,6 @@
 export class Utils {
 
-  static fixTwoDecimals(num: string | number) {
+  static showDecimal(num: string | number) {
     let value;
     typeof num !== 'string' ? value = num.toString() : value = num; 
     

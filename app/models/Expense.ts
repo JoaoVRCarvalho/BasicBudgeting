@@ -1,17 +1,17 @@
 import { Money } from "./Money"
 
-export class Expanse {
+export class Expense {
   public readonly type: string;
-  private readonly _value: Money;
+  private readonly _cost: Money;
   public description: string;
 
   constructor(type: string, value: Money, description: string) {
     this.type = type;
-    this._value = value;
+    this._cost = value;
     this.description = description;
   }
 
-  get value(): string{
-    return this._value.amount;
+  get cost(): Money{
+    return this._cost;
   }
 }

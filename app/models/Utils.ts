@@ -6,13 +6,18 @@ class Utils {
     
     const regExpression = new RegExp("^-?\\d+(?:\\.\\d{0," + 2 + "})?", "g");
     const inputValue = value.match(regExpression)[0];
-    const commaIndex = inputValue.indexOf('.');
+    const dotIndex = inputValue.indexOf('.');
 
-    if (commaIndex === -1) {
+    if (dotIndex === -1) {
       return `${inputValue}.${'0'.repeat(2)}`;
     }
     
-    const numberOfZeros= 2 - (inputValue.length - commaIndex);
+    let baseNumberOfZeros = 2;
+    if (inputValue[dotIndex + 1] && !inputValue[dotIndex + 2]) {
+      baseNumberOfZeros = 3;
+    }
+
+    const numberOfZeros = baseNumberOfZeros - (inputValue.length - dotIndex);
     return numberOfZeros > 0 ? `${inputValue + '0'.repeat(numberOfZeros)}`: inputValue;
   }
 }

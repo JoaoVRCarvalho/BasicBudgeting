@@ -1,4 +1,6 @@
 import { Budget } from "../models/Budget.js";
+import { Money } from "../models/Money.js";
+import { Expense } from "../models/Expense.js";
 import { Utils } from "../models/Utils.js";
 
 export class MoneyController {
@@ -8,12 +10,8 @@ export class MoneyController {
     this._input = document.querySelector('#valor');
   }
 
-  add() {
+  addBudget() {
     this._input.value = Utils.showDecimal(this._input.value)
     const budget = new Budget(this._input.value);
-    console.log(budget.amount);
-    console.log(budget.needs);
-    console.log(budget.wants);
-    console.log(budget.savings);
   }
 }

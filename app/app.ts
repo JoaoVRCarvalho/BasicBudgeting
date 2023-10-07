@@ -1,9 +1,18 @@
-import { MoneyController } from "./controllers/page.js";
+import { AmountController } from "./controllers/amount.controller.js";
+import { ExpenseController } from "./controllers/expense.controller.js";
 
-const form = document.querySelector('#amount-form')
-const controller = new MoneyController
+const amountForm = document.querySelector('#amount-form');
+const expenseForm = document.querySelector('#expense-form');
 
-form.addEventListener('submit', event => {
+const amountController = new AmountController();
+const expenseController = new ExpenseController();
+
+amountForm.addEventListener('submit', event => {
   event.preventDefault();
-  controller.addBudget();
-}) 
+  amountController.add();
+})
+
+expenseForm.addEventListener('submit', event => {
+  event.preventDefault();
+  expenseController.add();
+})

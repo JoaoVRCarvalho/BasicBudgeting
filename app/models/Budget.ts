@@ -8,7 +8,7 @@ export class Budget extends Money {
   private _expenses: Array<Expense> = [];
 
   // getters
-  get need(): string {
+  get needs(): string {
     return this._needsAmount.amount;
   }
   get wants(): string {

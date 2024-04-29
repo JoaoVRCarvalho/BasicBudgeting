@@ -17,7 +17,7 @@ export class Budget extends Money {
   get savings(): string {
     return this._savingsAmount.amount;
   }
-  
+
   get expenses(): ReadonlyArray<Expense> {
     return this._expenses;
   }
@@ -25,22 +25,20 @@ export class Budget extends Money {
   public addExpenseToBudget(expense: Expense): void {
     this._expenses.push(expense);
     this.subtractFromAmount(expense);
-  } 
+  }
 
   private subtractFromAmount(expense: Expense) {
-    switch(expense.type) {
-      case 'needs': {
-        this._needsAmount = new Money(this._needsAmount.subtract(expense.cost));
-        break;
-      }
-      case 'wants': {
-        this._wantsAmount = new Money(this._wantsAmount.subtract(expense.cost));
-        break;
-      }
-      case 'savings' : {
-        this._savingsAmount = new Money(this._savingsAmount.subtract(expense.cost));
-        break;
-      }
+    const amountMap = {
+      needs: '_needsAmount',
+      wants: '_wantsAmount',
+      savings: '_savingsAmount'
+    }
+
+    const amountProp = amountMap[expense.type as keyof typeof amountMap];
+
+    if (amountProp) {
+      const currentAmount: Money = (this as any)[amountProp];
+      (this as any)[amountProp] = new Money(currentAmount.subtract(expense.cost));
     }
   }
 }

@@ -21,20 +21,24 @@ expenseForm.addEventListener('submit', event => {
 
 showExpenseForm.addEventListener('click', event => {
   event.preventDefault();
-  let visibility = expenseForm.style.visibility;
 
-  if (visibility === '' || visibility === 'hidden') {
-    expenseForm.style.visibility = 'visible';
-    toggleExpenseFade();
-    setTimeout(toggleExpenseFade, 700);
+  if (expenseForm.classList.contains('hidden')) {
+    toggleClass(expenseForm, 'hidden');
+    toggleClass(expenseForm, 'fade');
+    console.log(expenseForm.classList);
+    setTimeout(expenseFormFade, 700);
   } else {
-    expenseForm.style.visibility = 'hidden';
+    toggleClass(expenseForm, 'hidden');
   }
 })
 
-function toggleExpenseFade() {
-  if (expenseForm.classList.contains('fade')) {
-    return expenseForm.classList.remove('fade'); 
+const expenseFormFade = () => {
+  toggleClass(expenseForm, 'fade');
+}
+
+function toggleClass(element: HTMLElement, className: string): void {
+  if (element.classList.contains(className)) {
+    return element.classList.remove(className); 
   }
-  return expenseForm.classList.add('fade');
+  return element.classList.add(className);
 }

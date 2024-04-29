@@ -1,4 +1,4 @@
-export abstract class view<T> {
+export abstract class View<T> {
   protected element: HTMLElement;
 
   constructor(selector: string) {

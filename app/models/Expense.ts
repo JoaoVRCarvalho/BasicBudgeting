@@ -4,7 +4,7 @@ export class Expense {
   public readonly dateOfInput: string
   public readonly type: string;
   private readonly _cost: Money;
-  public description: string;
+  public readonly description: string;
 
   constructor(type: string, value: Money, description: string) {
     this.type = type;

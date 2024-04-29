@@ -1,6 +1,7 @@
 import { Expense } from "../models/Expense.js";
 import { Money } from "../models/Money.js";
 import { Utils } from "../models/Utils.js";
+import { AmountController } from "./amount.controller.js";
 
 export class ExpenseController {
   private _expenseType: HTMLInputElement;
@@ -15,7 +16,8 @@ export class ExpenseController {
 
   add() {
     new Expense(this._expenseType.value, this.fixCost(), this._expenseDescription.value);
-    console.log(this._expenseType.value, this.fixCost(), this._expenseDescription.value);
+
+    
   }
 
   private fixCost() {
